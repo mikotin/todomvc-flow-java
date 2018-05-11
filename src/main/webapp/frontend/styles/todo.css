@@ -84,6 +84,9 @@ body {
     -moz-text-rendering: optimizeLegibility;
     text-rendering: optimizeLegibility;
 }
+.offline .todoapp h1 {
+    top: -102px;
+}
 
 .new-todo,
 .edit {

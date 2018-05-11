@@ -42,8 +42,7 @@ import java.util.List;
 @PageTitle("Todo MVC")
 @StyleSheet("frontend://styles/todo.css")
 @Viewport("width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes")
-public class TodoView extends Div
-        implements PageConfigurator {
+public class TodoView extends Div {
 
     private final TodoFilters actionBar;
     private final TodoListSection mainSection;
@@ -59,12 +58,6 @@ public class TodoView extends Div
         appSection.add(new TodoHeader(presenter), mainSection, actionBar);
         add(appSection, new TodoInfoFooter());
         presenter.refresh();
-    }
-
-    @Override
-    public void configurePage(InitialPageSettings settings) {
-        settings.addMetaTag("apple-mobile-web-app-capable", "yes");
-        settings.addMetaTag("apple-mobile-web-app-status-bar-style", "black");
     }
 
     /**

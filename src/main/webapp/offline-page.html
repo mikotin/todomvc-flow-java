@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#227aef">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <base href=".">
+    <title>TodoMVC</title>
+    <link rel="shortcut icon" href="icons/icon-96.png">
+    <link rel="stylesheet" href="frontend/styles/todo.css">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+</head>
+<body class="page">
+<div class="wrapper offline">
+
+    <section class="todoapp">
+        <header class="header">
+            <h1>todos</h1>
+        </header>
+        <section class="main">
+            <ul class="todo-list">
+                <li class="todo completed">
+                    <div class="view">
+                        <div class="toggle"></div>
+                        <label>TodoMVC offline</label>
+                    </div>
+                </li>
+                <li class="todo completed">
+                    <div class="view">
+                        <div class="toggle"></div>
+                        <label>Auto-refresh once we're back online</label>
+                    </div>
+                </li>
+                <li class="todo completed">
+                    <div class="view">
+                        <div class="toggle"></div>
+                        <label>Take it easy, while network-gnomes fix the issue</label>
+                    </div>
+                </li>
+                <li class="todo">
+                    <div class="view">
+                        <div class="toggle"></div>
+                        <label>Look important</label>
+                    </div>
+                </li>
+                <li class="todo">
+                    <div class="view">
+                        <div class="toggle"></div>
+                        <label>Start Todoing after we're back online</label>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </section>
+    <footer class="info">
+        <p>Created by <a href="https://vaadin.com/company/team">Mikko</a></p>
+        <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+    </footer>
+</div>
+
+<script>
+    window.addEventListener('online', function () {
+        console.log("Back in business of Todoing!");
+        window.location.reload();
+    });
+</script>
+</body>
+</html>
