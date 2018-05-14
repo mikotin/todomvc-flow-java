@@ -7,6 +7,8 @@ import com.vaadin.flow.component.html.Input;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.html.ListItem;
 import org.mikotin.flow.java.todomvc.backend.Todo;
+import org.mikotin.flow.java.todomvc.events.EnterUpEvent;
+import org.mikotin.flow.java.todomvc.events.EscUpEvent;
 import org.mikotin.flow.java.todomvc.ui.TodoPresenter;
 
 public class TodoElement extends ListItem {
@@ -26,17 +28,15 @@ public class TodoElement extends ListItem {
         editor = new Input();
         editor.setType("text");
         editor.setClassName("edit");
-        editor.getElement().addEventListener("blur", domEvent -> {
-            editDone(editor.getValue());
-        });
-        editor.addListener(KeyUpEvent.class, keyUpEvent -> {
-            if (keyUpEvent.getKey().equals(Key.ENTER)) {
-                editDone(editor.getValue().trim());
-            } else if (keyUpEvent.getKey().equals(Key.ESCAPE)) {
-                editing = false;
-                editDone(null);
-            }
-        });
+        // save on enter or blur
+        editor.getElement().addEventListener("blur", domEvent -> editDone(editor.getValue()));
+        editor.addListener(EnterUpEvent.class, enterUpEvent -> editDone(editor.getValue().trim()));
+
+        // cancel on esc
+        editor.addListener(EscUpEvent.class, escUpEvent -> {
+                    editing = false;
+                    editDone(null);
+                });
 
         add(view, editor);
         setStyle();
